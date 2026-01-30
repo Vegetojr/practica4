@@ -1,0 +1,49 @@
+<p>fromulario2-page works!</p>
+
+<h1>Formularios Reactivos</h1>
+
+<form action="" [formGroup]="formularioCOntacto">
+    <p>Nombre <input type="text" formControlName="nombre">
+        @if(this.formularioCOntacto.get('nombre')?.errors?.['required'])
+        {
+            <span style=" color: red;">(El nombre no puede quedar vacio)</span>
+        }
+    </p>
+    <p>Sexo 
+        <input type="radio" formControlName="sexo" value="M">Masculino
+        <input type="radio" formControlName="sexo" value="F">Femenino
+    </p>
+    <p>Email <input type="text" formControlName="Email">
+            @if(this.formularioCOntacto.get('Email')?.errors?.['required'])
+        {
+            <span style=" color: red;">(El Email no puede quedar vacio)</span>
+        }
+    </p>
+
+
+    <p>Pais:
+        <select formControlName="pais">
+            <option value="Mexico">Mexico</option>
+            <option value="India">India</option>
+            <option value="Pakistan">Pakistan</option>
+        </select>
+    </p>
+
+    <div formGroupName="pasatiempos">
+        <p>Pasatiempos:
+            <input type="checkbox" formControlName="leer">Leer
+            <input type="checkbox" formControlName="bairlar">Bailar
+            <input type="checkbox" formControlName="correr">Corre
+        </p>
+    </div>
+
+    <p>Mensaje 
+
+        <br>
+        <textarea name="" id="" rows="10" cols="70" formControlName="mensaje"></textarea>
+        
+    </p>
+    <button  (click)="submit()">Confirmar</button>
+</form>
+
+<div>Datos:{{datos()}}</div>

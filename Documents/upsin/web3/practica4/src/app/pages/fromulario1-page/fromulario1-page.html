@@ -1,0 +1,6 @@
+<p>fromulario1-page works!</p>
+<div>
+    <p>ingrese su nombre <input type="text" [(ngModel)]="nombre"></p>
+    <p>ingrese su apellido<input type="text"[(ngModel)]="apellido"></p>
+    <p>Nombre completo: {{nombre()|titlecase}}, {{apellido()|titlecase}}</p>
+</div>
