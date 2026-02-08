@@ -1,0 +1,91 @@
+
+
+<p> papu: {{ nombre | uppercase }}</p>
+<p>nivel de prosidad: {{nivelDePro()}}</p>
+@if (edad()>=18) 
+{
+    <p>Es Mayor de edad</p>
+
+}
+@else 
+{
+    <p>Es Menor de edad. Prende cam</p>
+}
+
+
+
+<p>Email pro :V : {{email()}}</p>
+<p>Sueldos mas basados: {{sueldos()[0] | currency}},{{sueldos()[1]| currency}},{{sueldos()[2]| currency}}</p>
+<p>La suma de los sueldosCom es: {{sumSalComputed() | currency}}</p>
+<button (click)="test()" >EL papu boton </button>
+<br>
+<h1>Lista de articulos</h1>
+
+<table>
+    <thead>
+        <th>Tabla</th>
+        <tr>
+            <td>Codigo</td>
+            <td>Descripcion</td>
+            <td>Preico</td>
+        </tr>
+    </thead>
+    <tbody>
+    @for (item of articulos(); track $index) 
+    {
+        <tr>
+            <td>{{item.codigo}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.Precio |currency}}</td>
+        </tr>
+    }
+        
+    </tbody>
+</table>
+
+<h1>Switch case Con Gambling :V</h1>
+
+
+
+
+@switch (genNum()) 
+{
+    @case (1) 
+    {
+        <p>Ganaste</p>
+    }
+    @case (2) 
+    {
+        <p>perdiste</p>
+    }
+
+    @case (3) 
+    {
+        <p>Baneado</p>
+    }
+
+    @default 
+    {
+        <p>OMG esto va a ser epico papus</p>
+    }
+}
+
+<div>
+    <h1>Las papu sumas y restas</h1>
+    <p>Contador: {{contador()}}</p>
+    <button (click)="Incrementar()">Sumar 1</button>
+    <button (click)="Decrementar()">Restar 1</button>
+</div>
+
+<h1>Binding</h1>
+<div>
+    <input type="button" (click)="fijarNombre1()" value="Juan">
+    <input type="button" (click)="fijarNombre2()" value="Ana">
+</div>
+
+<input type="text" [value]="nombreBoton()" >
+
+
+<router-outlet />
+
+

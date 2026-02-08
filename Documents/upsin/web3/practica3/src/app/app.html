@@ -1,0 +1,17 @@
+<h1>Ete setch</h1>
+
+<div style="text-align: center;">
+    <app-dado [color]="'red'" [colorTexto]="'black'"></app-dado>
+    <app-dado [colorTexto]="'cyan'"></app-dado>
+    <app-dado [color]="'pink'"></app-dado>
+
+</div>
+
+<hr>
+<div style="text-align: center;"> 
+    <app-cronometro [inicio]="0" (multTen)="actualizarTen($event) " #cronometro></app-cronometro>
+    <h2>Evento</h2>
+    <p>{{mensaje()}}</p>
+    <button (click)='restart()'>Reiniciar</button>
+</div>
+<router-outlet />
