@@ -1,1 +1,40 @@
-<p>fromulario3-page works!</p>
+
+<form [formGroup]="formularioContacto" (ngSubmit)="submit()">
+    
+    <p>Nombre: <input type="text" formControlName="nombre">
+        @if (formularioContacto.get('nombre')?.errors?.['required']&& this.formularioContacto.dirty) 
+        {
+            <br><span style=" color: red;">(El nombre no puede quedar vacio)</span>
+        }
+        @if(formularioContacto.get('nombre')?.errors?.['minlength']&& this.formularioContacto.dirty)
+        {
+            <br><span style=" color: red;">(El nombre tinene que tener mas de 4 caracteres)</span>
+        }
+    </p>
+    <p>Emialx: <input type="text" formControlName="email">
+        @if(formularioContacto.get('email')?.errors?.['email'] && this.formularioContacto.dirty)
+        {
+            <br><span style=" color: red;">(El Email tiene que ser valido)</span>
+        }
+        @else if (formularioContacto.get('email')?.errors?.['required']&& this.formularioContacto.dirty) 
+        {
+            <br><span style=" color: red;">(El Email no puede estar vacio)</span>
+        }</p>
+    <p>Mensaje
+        <textarea rows="10" cols="70" formControlName="mensaje"></textarea>
+            @if (formularioContacto.get('mensaje')?.errors?.['maxlength']&& this.formularioContacto.dirty)
+            {
+                <br><span style=" color: red;">(El mensaje debe de ser mas corto)</span>
+            }
+            @if (formularioContacto.get('mensaje')?.errors?.['required']&& this.formularioContacto.dirty)
+            {
+                <br><span style=" color: red;">(Tiene que tener un Mensaje)</span>
+            }
+    </p>
+    <button type="submit">Confirmar</button>
+
+</form>
+
+<div>
+    {{resultado()}}
+</div>

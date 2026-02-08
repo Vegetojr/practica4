@@ -13,8 +13,8 @@ export class Fromulario2Page
   formularioCOntacto=new FormGroup(
     {
       nombre:new FormControl('',[Validators.required,Validators.minLength(4)]),
-      Email:new FormControl('',[Validators.required]),
-      mensaje:new FormControl(''),
+      Email:new FormControl('',[Validators.email,Validators.required]),
+      mensaje:new FormControl('',[Validators.required,Validators.maxLength(10)]),
       sexo:new FormControl(''),
       pasatiempos: new FormGroup(
         {
@@ -29,6 +29,7 @@ export class Fromulario2Page
       if(this.formularioCOntacto.invalid)
         {
           this.datos.set('Existen datos invalidos en el formulario')
+          this.formularioCOntacto.markAsDirty();
           return
         }
       console.log(this.formularioCOntacto.value.pasatiempos)

@@ -4,9 +4,13 @@
 
 <form action="" [formGroup]="formularioCOntacto">
     <p>Nombre <input type="text" formControlName="nombre">
-        @if(this.formularioCOntacto.get('nombre')?.errors?.['required'])
+        @if(formularioCOntacto.get('nombre')?.errors?.['required']&& this.formularioCOntacto.dirty)
         {
-            <span style=" color: red;">(El nombre no puede quedar vacio)</span>
+            <br><span style=" color: red;">(El nombre no puede quedar vacio)</span>
+        }
+        @if(formularioCOntacto.get('nombre')?.errors?.['minlength']&& this.formularioCOntacto.dirty)
+        {
+            <br><span style=" color: red;">(El nombre tinene que tener mas de 4 caracteres)</span>
         }
     </p>
     <p>Sexo 
@@ -14,9 +18,14 @@
         <input type="radio" formControlName="sexo" value="F">Femenino
     </p>
     <p>Email <input type="text" formControlName="Email">
-            @if(this.formularioCOntacto.get('Email')?.errors?.['required'])
+        
+        @if(formularioCOntacto.get('Email')?.errors?.['email'] && this.formularioCOntacto.dirty)
         {
-            <span style=" color: red;">(El Email no puede quedar vacio)</span>
+            <br><span style=" color: red;">(El Email tiene que ser valido)</span>
+        }
+        @else if (formularioCOntacto.get('Email')?.errors?.['required']&& this.formularioCOntacto.dirty) 
+        {
+            <br><span style=" color: red;">(El Email no puede estar vacio)</span>
         }
     </p>
 
@@ -41,6 +50,15 @@
 
         <br>
         <textarea name="" id="" rows="10" cols="70" formControlName="mensaje"></textarea>
+            @if (formularioCOntacto.get('mensaje')?.errors?.['maxlength']&& this.formularioCOntacto.dirty)
+            {
+                <br><span style=" color: red;">(El mensaje debe de ser mas corto)</span>
+            }
+            @if (formularioCOntacto.get('mensaje')?.errors?.['required']&& this.formularioCOntacto.dirty)
+            {
+                <br><span style=" color: red;">(Tiene que tener un Mensaje)</span>
+            }
+
         
     </p>
     <button  (click)="submit()">Confirmar</button>
