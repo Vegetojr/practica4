@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <th>matricula</th>
+        <th>Nombre</th>
+        <th>Corte 1</th>
+        <th>Corte 2</th>
+        <th>Corte 3</th>
+        <th>Seleccionar</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody>
+        @for (alumno of listaAlumnos(); track $index) {
+        <tr>
+            <td>{{alumno.matricula}}</td>
+            <td>{{alumno.nombre}}</td>
+            <td>{{alumno.corte1}}</td>
+            <td>{{alumno.corte2}}</td>
+            <td>{{alumno.corte3}}</td>
+            <td><button (click)="formBorrar($index)">Borrar</button></td>
+            <td><button (click)="formSeleccionar($index)">Seleccionar</button></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<app-cal (nuevoAlumno)="formSubmit($event)"></app-cal>
+
+<app-agg-cal [alumnos]="listaAlumnos()" (alumnosCambiados)="formActualizar($event)">
+    
+</app-agg-cal>

@@ -1,0 +1,46 @@
+<form [formGroup]="formularioAlumno" (ngSubmit)="submitForm()">
+    <p>Nombre <input type="text" formControlName="nombre"></p>
+    @if (formularioAlumno.get('nombre')?.errors?.['required']&& this.formularioAlumno.dirty) 
+    {
+        <span>campo requerido</span>
+    }
+    <p>Materia <input type="text" formControlName="matricula">
+    @if (formularioAlumno.get('matricula')?.errors?.['required']&& this.formularioAlumno.dirty) 
+    {
+        <br><span>campo requerido</span>
+    }
+    </p>
+
+    <p>Corte 1 <input type="number" formControlName="corte1">
+        @if (formularioAlumno.get('corte1')?.errors?.['max']&& this.formularioAlumno.dirty) 
+        {
+            <span>la calificacion tiene que ser menor a 10 o mayor a 0</span>
+        }
+        @if (formularioAlumno.get('corte1')?.errors?.['min']&& this.formularioAlumno.dirty) 
+        {
+            <span>la calificacion tiene que ser menor a 10 o mayor a 0</span>
+        }
+    </p>
+    <p>Corte 2 <input type="number" formControlName="corte2">
+        @if (formularioAlumno.get('corte2')?.errors?.['max']&& this.formularioAlumno.dirty) 
+        {
+            <span>la calificacion tiene que ser menor a 10 o mayor a 0</span>
+        }
+        @if (formularioAlumno.get('corte2')?.errors?.['min']&& this.formularioAlumno.dirty) 
+        {
+            <span>la calificacion tiene que ser menor a 10 o mayor a 0</span>
+        }
+    </p>
+        <p>Corte 3 <input type="number" formControlName="corte3">
+        @if (formularioAlumno.get('corte3')?.errors?.['max']&& this.formularioAlumno.dirty) 
+        {
+            <span>la calificacion tiene que ser menor a 10 o mayor a 0</span>
+        }
+        @if (formularioAlumno.get('corte3')?.errors?.['min']&& this.formularioAlumno.dirty) 
+        {
+            <span>la calificacion tiene que ser menor a 10 o mayor a 0</span>
+        }
+    </p>
+    <button type="submit">agregar</button>
+    <button (click)="resetForm()">Nuevo</button>
+</form>
